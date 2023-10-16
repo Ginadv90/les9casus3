@@ -1,0 +1,40 @@
+import math
+def bereken_prijs_werkuren(vm):
+    aantal_uur = math.ceil(vm/12)
+    prijs = aantal_uur*40
+    return prijs
+
+def prijs_klinkers(vm):
+    print("welke maat a(10x10), b(12x12), c(14x14)")
+    maat = input("welke maat")
+    a_maat = 14
+    if maat.upper() == "A" or maat.upper() == "B" or maat.upper() == "C":
+        if maat.upper() == "A":
+            prijs = vm*a_maat
+        elif maat.upper() == "B":
+            prijs = vm*16
+        else:
+            prijs = vm*16.5
+        return prijs
+    else:
+     print("verkeerde invoer")
+def klinker_verwijderen(vm):
+    uitvoeren = input("wens je de oude klinkers of kiezels te verwijderen Y/N")
+    prijs = 0
+    if uitvoeren == "N":
+        return prijs
+    else:
+        aantal_uur = math.ceil(vm/15)
+        prijs = aantal_uur*40
+        return prijs
+def bereken_vervoer():
+    km = float(input("geef het aantal km"))
+    prijs = 0
+    if km <= 10:
+        prijs = 5
+    else:
+        prijs = 5+(km-10)*0.3
+    return prijs
+aantal_vm = int(input("geef het aantal vierkante in"))
+totaalprijs = bereken_prijs_werkuren(aantal_vm)+prijs_klinkers(aantal_vm)+klinker_verwijderen(aantal_vm)+bereken_vervoer()
+print("de totaalprijs : € ", totaalprijs)
